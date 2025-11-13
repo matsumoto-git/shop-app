@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, model.Product"%>
-<%@ include file="/WEB-INF/header.jsp" %>
+<%@ include file="/WEB-INF/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +61,7 @@ h2 {
 		%>
 		<div class="product">
 			<a href="/shop/ProductDetail?id=<%=p.getId()%>"> <img
-				src="<%=p.getImagePath() != null ? p.getImagePath() : "images/noimage.png"%>"
+				src="<%=request.getContextPath()%>/<%=p.getImagePath()%>"
 				alt="商品画像">
 				<div class="product-name"><%=p.getName()%></div>
 			</a>

@@ -21,5 +21,9 @@ public class Cart {
 	public List<CartItem> getItems() {
 		return items;
 	}
+//	削除
+	public void removeItem(int productId) {
+		items.removeIf(item -> item.getProduct().getId() == productId);
+	}
 
 }

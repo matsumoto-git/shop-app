@@ -22,7 +22,7 @@ public class AddToCart extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
 //		商品IDと数量を受け取る
 	    int productId = Integer.parseInt(request.getParameter("productId"));
 	    int quantity = Integer.parseInt(request.getParameter("quantity"));
