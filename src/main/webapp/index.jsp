@@ -10,7 +10,7 @@
 <h1>ようこそ</h1>
 <form action="Login" method="post">
 メールアドレス：<input type="email" name="mail"><br>
-パスワード：<input type="password" name="pass"><br>
+パスワード：<input type="password" name="password"><br>
 <input type="submit" value="ログイン"><br><br>
 <a href="<%= request.getContextPath() %>/main">ログインせずに商品一覧を見る</a>
 </form>
