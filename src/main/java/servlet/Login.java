@@ -46,9 +46,18 @@ public class Login extends HttpServlet {
 		session.setAttribute("loginUser", user);
 		response.sendRedirect(request.getContextPath() + "/main");
 	} else { 
-		request.setAttribute("errorMsg", "ログイン失敗");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/loginResult.jsp");
+		request.setAttribute("error", "メールアドレスまたはパスワードが違います");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	
+//	ログイン失敗時のエラーメッセージ表示
+//	if (loginUser == null) {
+//		request.setAttribute("error", "メールアドレスまたはパスワードが違います");
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+//		dispatcher.forward(request, response);
+//		return;
+//	}
 	}
 }

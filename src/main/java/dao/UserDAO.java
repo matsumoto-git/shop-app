@@ -44,6 +44,45 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	public boolean insert(User user) {
+		try {
+			Class.forName("org.h2.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new IllegalStateException("JDBCドライバを読み込めませんでした");
+		}
+		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER,DB_PASS)) {
+			String sql = "insert into users (name, email, password, is_admin) values (?, ?, ?, false)";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, user.getName());
+			pStmt.setString(2, user.getEmail());
+			pStmt.setString(3, user.getPassword());
+			int result = pStmt.executeUpdate();
+			return result == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean existsByEmail(String email) {
+		try {
+			Class.forName("org.h2.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new IllegalStateException("JDBCドライバを読み込めませんでした");
+		}
+		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER,DB_PASS)) {
+			String sql = "select count(*) from users where email = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, email);
+			ResultSet rs = pStmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1) > 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }
-

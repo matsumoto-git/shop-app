@@ -6,7 +6,7 @@
 	if (loginUser != null) {
 	%>
 	<span style="color:white; margin-right: 10px;">
-	<%= loginUser.getEmail() %> さんがログイン中
+	<%= loginUser.getName() %> さんがログイン中
 	</span>
 	<a href="<%= request.getContextPath() %>/Logout" class="header-button">ログアウト</a>
 	<a href="<%= request.getContextPath() %>/CartView" class="header-button">カート</a>
